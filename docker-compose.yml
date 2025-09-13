@@ -1,0 +1,38 @@
+services:
+  mongo:
+    image: mongo:7.0
+    container_name: cpen321-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: usermanagement
+    volumes:
+      - mongodb_data:/data/db
+      - ./backend/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PORT=3000
+    restart: always
+    container_name: cpen321-app
+    environment:
+        - MONGODB_URI=mongodb://admin:password@mongo:27017/usermanagement?authSource=admin
+        - PORT=3000
+        - JWT_SECRET=your-super-secret-jwt-key-here-change-this-in-production
+        - GOOGLE_CLIENT_ID=your-google-client-id-here
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+    command: node dist/index.js
+
+
+
+volumes:
+  mongodb_data:
