@@ -49,7 +49,7 @@ export class CalendarService {
       const events = response.data.items || [];
       
       // Filter for CPEN 321 related events
-      const cpen321Events = events.filter(event => {
+      const cpen321Events = events.filter((event: any) => {
         if (!event.summary) return false;
         
         const summary = event.summary.toLowerCase();
@@ -62,7 +62,7 @@ export class CalendarService {
       // Sort by start time and limit results
       return cpen321Events
         .slice(0, maxResults)
-        .map(event => this.mapGoogleEventToCalendarEvent(event));
+        .map((event: any) => this.mapGoogleEventToCalendarEvent(event));
         
     } catch (error) {
       logger.error('Error fetching upcoming milestones:', error);
@@ -93,7 +93,7 @@ export class CalendarService {
 
       const events = response.data.items || [];
       
-      return events.map(event => this.mapGoogleEventToCalendarEvent(event));
+      return events.map((event: any) => this.mapGoogleEventToCalendarEvent(event));
         
     } catch (error) {
       logger.error('Error fetching today\'s schedule:', error);
