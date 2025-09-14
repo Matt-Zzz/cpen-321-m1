@@ -1,18 +1,13 @@
 {
   "compilerOptions": {
     "lib": ["es2023"],
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "incremental": true,
-    "tsBuildInfoFile": "./dist/.tsbuildinfo"
+    "rootDir": "./src"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+  "exclude": ["node_modules", "dist"]
 }

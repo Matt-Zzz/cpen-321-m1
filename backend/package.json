@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "NODE_OPTIONS='--max-old-space-size=4096' tsc",
+    "build": "tsc",
     "start": "node dist/index.js",
     "dev": "nodemon --exec ts-node src/index.ts",
     "format": "prettier --check \"src/**/*.{ts,js,json}\"",
@@ -16,9 +16,7 @@
     "dotenv": "^17.2.1",
     "express": "^4.18.0",
     "google-auth-library": "^10.2.1",
-    "googleapis": "^159.0.0",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.19.0",
     "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "zod": "^4.1.1"
